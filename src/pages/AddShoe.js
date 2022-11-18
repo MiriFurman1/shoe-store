@@ -15,13 +15,13 @@ export default function AddShoe() {
         e.preventDefault();
         if (brand.trim() && name.trim() && image.trim()) {
             try {
-                setIsLoading(true);
                 const { data } = await axios.post('https://637389a9348e9472990f6169.mockapi.io/shoes/', {
                     brand: brand,
                     name: name,
                     price: price,
                     image: image
                 });
+                console.log(data);
                 setBrand('')
                 setName('')
                 setPrice('')
@@ -41,6 +41,8 @@ export default function AddShoe() {
         <div className="addShoePage">
 
             <h1> add shoe</h1>
+            {isLoading && <h1 className='spinner'>loading</h1>}
+            {errorMessage ? <h4>{errorMessage}</h4> : ""}
             <form onSubmit={handleSubmit}>
                 <label htmlFor="brand"> Brand</label>
                 <input type="text" name="brand" value={brand} onChange={({ target: { value } }) => setBrand(value)}></input>

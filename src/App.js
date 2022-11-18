@@ -1,7 +1,6 @@
-import { useEffect,useState } from 'react';
+
 import './App.css';
-import axios from 'axios'
-import { Routes, Route, Link, useParams } from 'react-router-dom';
+import { Routes, Route, Link} from 'react-router-dom';
 import AddShoe from './pages/AddShoe'
 import ShoesPage from './pages/ShoesPage'
 import ShoePage from './pages/ShoePage'

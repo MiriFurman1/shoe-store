@@ -8,6 +8,10 @@ img{
   object-fit: cover;
   border-radius: 5px;
 }
+.welcome img{
+  width:70vw;
+  height:50vh;
+}
 
 .App {
   text-align: center;
@@ -113,4 +117,27 @@ button {
   background-color:#7B94BD;
   width:60vw;
   border-radius: 5px;
+}
+
+
+@media (max-width:800px){
+
+  .addShoePage form{
+    width:80vw;
+  }
+
+  .shoePage form{
+    width:80vw;
+  }
+  button{
+    width:20vw
+  }
+}
+
+@media (max-width:500px){
+  img{
+    width:50vw;
+    height:250px;
+
+  }
 }

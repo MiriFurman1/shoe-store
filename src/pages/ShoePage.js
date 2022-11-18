@@ -20,7 +20,7 @@ export default function ShoePage(props) {
 
     useEffect(() => {
 
-        const fetchData = async () => {
+        const fetchDataForId = async () => {
             try {
                 setIsLoading(true);
                 const { data } = await axios.get(`https://637389a9348e9472990f6169.mockapi.io/shoes/${shoeid.shoeid}`);
@@ -35,8 +35,8 @@ export default function ShoePage(props) {
                 }, 1500);
             }
         };
-        fetchData();
-    }, [shoeid.shoeid]);
+        fetchDataForId();
+    }, [shoeid,isEditing]);
 
     //*delete*//
     const handleDelete = async (shoeid) => {
@@ -44,7 +44,7 @@ export default function ShoePage(props) {
             const { data } = await axios.delete(
                 `https://637389a9348e9472990f6169.mockapi.io/shoes/${shoeid.shoeid}`
             );
-
+                console.log(data);
         } catch (e) {
             setErrorMessage(e.message);
             setTimeout(() => {
@@ -58,7 +58,6 @@ export default function ShoePage(props) {
     //* edit*//
     function handleEditClick(shoeid) {
         setIsEditing(true)
-        console.log(shoeid.shoeid);
         setBrand(specificShoeData.brand)
         setName(specificShoeData.name)
         setPrice(specificShoeData.price)
@@ -66,37 +65,35 @@ export default function ShoePage(props) {
     }
 
 
-    // function handleEditSubmit(e) {
-    //     e.preventDefault();
-    //     console.log(shoeid.shoeid);
-    //     handleUpdate(shoeid)
+    function handleEditSubmit(e) {
+        e.preventDefault();
+        handleUpdate(shoeid)
+    }
 
-    // }
+    async function handleUpdate() {
+        try {
+            const { data } = await axios.put(`https://637389a9348e9472990f6169.mockapi.io/shoes/${shoeid.shoeid}`, {
+                brand: brand,
+                name: name,
+                price: price,
+                image: image
+            });
+            console.log(data);
+            setIsEditing(false)
+        } catch (e) {
+            setErrorMessage(e.message);
+            setTimeout(() => {
+                setErrorMessage(null);
+            }, 1500);
+        }
 
-    // async function handleUpdate() {
-    //     try {
-    //         console.log(shoeid);
-    //         const { data } = await axios.put(`https://637389a9348e9472990f6169.mockapi.io/shoes/${shoeid.shoeid}`, {
-    //             brand: brand,
-    //             name: name,
-    //             price: price,
-    //             image: image
-    //         });
-    //         setIsEditing(false)
-    //     } catch (e) {
-    //         setErrorMessage(e.message);
-    //         setTimeout(() => {
-    //             setErrorMessage(null);
-    //         }, 1500);
-    //     }
-
-    // }
+    }
 
 
 
 
     return (<div className="shoePage">
-        {isEditing ? <form >
+        {isEditing ? <form onSubmit={handleEditSubmit}>
             <label htmlFor="brand"> Brand</label>
             <input type="text" value={brand} onChange={({ target: { value } }) => setBrand(value)}></input>
             <label htmlFor="name"> Name</label>
@@ -105,9 +102,8 @@ export default function ShoePage(props) {
             <input type="number" name="price" value={price} onChange={({ target: { value } }) => setPrice(value)}></input>
             <label htmlFor="image"> Image</label>
             <input type="text" name="image" value={image} onChange={({ target: { value } }) => setImage(value)}></input>
-            <button type="submit" onSubmit={(e)=>{e.preventDefault()
-                console.log(e)}}>Save</button>
-            <button>cancel</button>
+            <button type="submit">Save</button>
+            <button onClick={() => setIsEditing(false)}>cancel</button>
         </form> : ""}
         {isLoading && <h1 className='spinner'>loading</h1>}
         {errorMessage ? <h4>{errorMessage}</h4> : ""}
