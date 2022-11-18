@@ -47,7 +47,7 @@ nav a {
 .shoeCard {
   margin: 20px;
   padding: 15px;
-  background-color: #3066be;
+  background-color: #7b94bd;
   border-radius: 5px;
   width: 400px;
   height:450px;
@@ -61,14 +61,16 @@ nav a {
   align-items: center;
 }
 
+.addShoePage form{
+  width: 50vw;
+  height: 60vh;
+}
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #3066be;
-  width: 50vw;
-  height: 60vh;
+  background-color: #7B94BD;
   border-radius: 5px;
 }
 
@@ -100,12 +102,15 @@ button {
   justify-content: center;
   align-items: center;
 }
+.shoePage form{
+  width:60vw;
+}
 .shoePageDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color:#3066be;
+  background-color:#7B94BD;
   width:60vw;
   border-radius: 5px;
 }
