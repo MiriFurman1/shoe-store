@@ -1,0 +1,26 @@
+*{
+  color:#3C3744;
+}
+.App {
+  text-align: center;
+  background-color: #B4C5E4;
+  width:100vw;
+  height:100vh;
+}
+
+nav{
+  background-color: #3066BE;
+  height:10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+nav a{
+  text-decoration: none;
+  background-color: #090C9B;
+  color:#DDDDDD;
+  padding: 10px;
+  border-radius: 5px;
+}
