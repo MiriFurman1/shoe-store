@@ -1,6 +1,14 @@
 * {
   color: #3c3744;
 }
+
+img{
+  width:300px;
+  height:300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 .App {
   text-align: center;
   background-color: #b4c5e4;
@@ -8,6 +16,11 @@
   min-height: 100vh;
 }
 
+a{
+  text-decoration: none;
+  color: #3c3744
+}
+/** navbar **/
 nav {
   background-color: #3066be;
   height: 10vh;
@@ -24,6 +37,7 @@ nav a {
   border-radius: 5px;
 }
 
+/** all shoes page **/
 .shoesDiv {
   display: flex;
   flex-wrap: wrap;
@@ -33,9 +47,13 @@ nav a {
 .shoeCard {
   margin: 20px;
   padding: 15px;
-  border: 1px black solid;
+  background-color: #3066be;
+  border-radius: 5px;
+  width: 400px;
+  height:450px;
 }
 
+/** add new shoe **/
 .addShoePage {
   display: flex;
   flex-direction: column;
@@ -49,7 +67,6 @@ form {
   align-items: center;
   justify-content: center;
   background-color: #3066be;
-
   width: 50vw;
   height: 60vh;
   border-radius: 5px;
@@ -74,7 +91,10 @@ button {
   font-weight: 700;
 }
 
+/** specific shoe page **/
+
 .shoePage{
+  margin-top:15px ;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,4 +107,5 @@ button {
   align-items: center;
   background-color:#3066be;
   width:60vw;
+  border-radius: 5px;
 }
